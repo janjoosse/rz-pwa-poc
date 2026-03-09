@@ -1,0 +1,41 @@
+<div class="top-navigation">
+    @for (link of header()?.fields?.navigationTop?.fields?.links; track link.sys.id) {
+        @let navigationLink = $any(link).fields;
+        <a 
+            [href]="navigationLink.url"
+            class="top-navigation__link"
+        >
+            {{ navigationLink.name }}
+        </a>
+    }
+    @defer {
+        <div class="top-navigation__country-picker">Now I'm fully loaded</div>
+    }
+    @placeholder {
+        <span class="top-navigation__country-picker--placeholder">Now I'm fully loaded</span>
+    }
+</div>
+<img 
+    src="img/RZ_logo.svg"
+    [alt]="'Rijk Zwaan Logo'"
+    class="logo"
+    fetchpriority="high"
+    routerLink="/"
+/>
+<div class="hamburger-menu" [ngClass]="{ open: isMenuOpen }" (click)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="main-navigation wide-bg-color">
+    @for (link of header()?.fields?.navigationMain?.fields?.links; track link.sys.id) {
+        @let navigationLink = $any(link).fields;
+        <a 
+            [href]="navigationLink.url"
+            class="main-navigation__link"
+        >
+            {{ navigationLink.name }}
+        </a>
+    }   
+</div>
+

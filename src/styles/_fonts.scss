@@ -1,0 +1,78 @@
+// regular - Latin
+@font-face {
+  font-family: 'Okta Neue Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_regular.woff') format('woff');
+  src: url('/fonts/oktah_neue_regular.latin.woff2') format('woff2');
+  font-display: swap;
+  unicode-range: U+0000-00FF;
+}
+
+// @font-face {
+//   font-family: 'Okta Neue Regular';
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_regular.woff') format('woff');
+//   src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_regular.woff2') format('woff2');
+//   font-display: swap;
+// }
+
+// semibold
+@font-face {
+  font-family: 'Okta Neue Semi';
+  font-style: normal;
+  font-weight: 600;
+  src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_semibold.woff') format('woff');
+  src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_semibold.woff2') format('woff2');
+  font-display: swap;
+}
+
+// bold
+@font-face {
+  font-family: 'Okta Neue Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_bold.woff') format('woff');
+  src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_bold.woff2') format('woff2');
+  font-display: swap;
+}
+
+// Italic
+@font-face {
+  font-family: 'Okta Neue Italic';
+  font-style: normal;
+  src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_regular_italic.woff') format('woff');
+  src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_regular_italic.woff2') format('woff2');
+  font-display: swap;
+}
+
+// bold italic
+@font-face {
+  font-family: 'Okta Neue Bold Italic';
+  font-style: italic;
+  font-weight: bold;
+  src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_bold_italic.woff') format('woff');
+  src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_bold_italic.woff2') format('woff2');
+  font-display: swap;
+}
+
+// medium
+@font-face {
+  font-family: 'Okta Neue Medium';
+  font-style: normal;
+  font-weight: 500;
+  src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_medium.woff') format('woff');
+  src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_medium.woff2') format('woff2');
+  font-display: swap;
+}
+
+// light
+@font-face {
+  font-family: 'Okta Neue Light';
+  font-style: normal;
+  font-weight: 300;
+  src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_light.woff') format('woff');
+  src: url('https://assets.contentapps.rijkzwaan.com/fonts/oktah_neue_light.woff2') format('woff2');
+  font-display: swap;
+}

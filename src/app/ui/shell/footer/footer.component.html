@@ -1,0 +1,24 @@
+@defer {
+    <div class="footer wide-bg-color">
+        <img src="img/RZ_logo_white.svg" alt="Rijk Zwaan Logo White" class="footer__logo" fetchpriority="high"/>
+        @if (footer && footer()?.fields?.collection?.length) {
+            @for (linksCollection of footer()!.fields.collection; track linksCollection.sys.id) {
+                <div class="footer__links-collection">
+                    <h3>{{ linksCollection.fields.name }}</h3>
+                    <ul class="footer__links-collection__list">
+                        @for (link of linksCollection.fields.links; track link.sys.id) {
+                            <li class="footer__links-collection__list__item">
+                                <a  href="{{ link.fields.url }}" class="footer__links-collection__list__item__link">
+                                    {{ link.fields.name }}
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        }
+    </div>
+}
+@placeholder {
+    <div>Placeholder footer</div>
+}

@@ -1,0 +1,122 @@
+@use 'mixins' as mx;
+
+:host {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    gap: 1rem;
+    padding-top: 16px;
+
+    @include mx.media-breakpoint-down(md) {
+        grid-template-rows: repeat(1, auto);
+        grid-template-columns: 1fr auto;
+    }
+    
+    .top-navigation {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(max-content, 1rem));
+        gap: 1.5rem;
+        justify-content: end;
+
+        @include mx.media-breakpoint-down(md) {
+            display: none;
+        }
+
+        &__link,
+        &__country-picker {
+            color: #00411a;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            font-family: 'Okta Neue Regular', sans-serif;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            &--placeholder {
+                color: #ffffff;
+            }
+        }
+    }
+
+    .logo {
+        max-height: 30px;
+        cursor: pointer;
+        
+        @include mx.media-breakpoint-up(md) {
+            max-height: 40px;
+        }
+    }
+
+    .hamburger-menu {
+        position: relative;
+        width: 19.5px;
+        height: 23px;
+        cursor: pointer;
+        place-self: end;
+        margin-top: 9px;
+        
+        @include mx.media-breakpoint-up(md) {
+            display: none;
+        }
+        
+        span {
+            position: absolute;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 4px;
+            background-color: #00411a;
+            border-radius: 2px;
+            opacity: 1;
+            transition: 0.25s ease-in-out;
+            transform: rotate(0deg);
+        }
+        
+        span:nth-child(1) {
+            top: 0;
+        }
+
+        span:nth-child(2) {
+            top: 8px;
+        }
+
+        span:nth-child(3) {
+            top: 16px;
+        }
+
+        &.open {
+            span:nth-child(1) {
+                top: 8px;
+                transform: rotate(135deg);
+            }
+
+            span:nth-child(2) {
+                opacity: 0;
+            }
+
+            span:nth-child(3) {
+                top: 8px;
+                transform: rotate(-135deg);
+            }
+        }
+    }
+
+    .main-navigation {
+        color: #ffffff;
+        height: 60px;
+        align-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(max-content, 1rem));
+        gap: 1rem;
+        
+        @include mx.media-breakpoint-down(md) {
+            display: none;
+        }
+        
+        &__link {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    }
+}

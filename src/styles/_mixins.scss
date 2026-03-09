@@ -1,0 +1,27 @@
+@import 'variables';
+
+// _mixins.scss
+@mixin media-breakpoint-down($name) {
+  @if map-has-key($breakpoints, $name) {
+    // Subtract 0.02px to prevent overlap with the next breakpoint's min-width
+    $max-width: map-get($breakpoints, $name) - 0.02px;
+    
+    @media (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    @warn "Invalid breakpoint name: #{$name}.";
+  }
+}
+
+@mixin media-breakpoint-up($name) {
+  @if map-has-key($breakpoints, $name) {
+    $min-width: map-get($breakpoints, $name);
+    
+    @media (min-width: $min-width) {
+      @content;
+    }
+  } @else {
+    @warn "Invalid breakpoint name: #{$name}. Available: #{map-keys($breakpoints)}";
+  }
+}
