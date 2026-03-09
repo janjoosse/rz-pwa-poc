@@ -20,6 +20,12 @@ export class ContentfulService {
     map(headers => headers.length > 0 ? headers[0] : undefined),
   ));
 
+  // HOMEPAGEHERO
+
+
+  // HOMEPAGESECTIONS
+
+
   // FOOTER
   loadFooter() {
     this.footer = toSignal(
@@ -30,6 +36,5 @@ export class ContentfulService {
     );
   }
 
-  // HOMEPAGE
   // TODO
 }
