@@ -1,9 +1,10 @@
+import { JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ContentfulService } from '../../../core/services/contentful.service';
 
 @Component({
   selector: 'rz-home-page',
-  imports: [],
+  imports: [JsonPipe],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
