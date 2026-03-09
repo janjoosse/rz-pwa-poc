@@ -1,10 +1,11 @@
 import { inject, Injectable, Injector, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
-import { FOOTER, HEADER } from '../models/content/content-types';
+import { FOOTER, HEADER, HOMEPAGEHERO } from '../models/content/content-types';
 import { Entry } from '../models/content/contentful/entry';
 import { Footer } from '../models/content/footer';
 import { Header } from '../models/content/header';
+import { HomepageHero } from '../models/content/homepage-hero';
 import { ContentfulHttpClientService } from './contentful-http-client.service';
 
 @Injectable({
@@ -21,10 +22,11 @@ export class ContentfulService {
   ));
 
   // HOMEPAGEHERO
-
-
+  homepageHero = toSignal(this.cfClient.getEntries<HomepageHero>({ contentType: HOMEPAGEHERO, limit: 1, include: 2 }).pipe(
+    map(heroes => heroes.length > 0 ? heroes[0] : undefined),
+  ));
   // HOMEPAGESECTIONS
-
+  // TODO
 
   // FOOTER
   loadFooter() {
