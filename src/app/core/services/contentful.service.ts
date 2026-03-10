@@ -33,8 +33,9 @@ export class ContentfulService {
   loadFooter() {
     this.footer = toSignal(
       this.cfClient.getEntries<Footer>({ contentType: FOOTER, limit: 1, include: 2 }).pipe(
+        tap((footers) => console.log('Fetched footer:', footers)),
         map(footers => footers.length > 0 ? footers[0] : undefined),
-      ), 
+      ),
       { injector: this.injector }
     );
   }

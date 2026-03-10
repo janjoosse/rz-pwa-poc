@@ -31,4 +31,12 @@ body {
     .wide-bg-color--primary::before {
         background-color: #487e38;
     }
+
+    a {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }

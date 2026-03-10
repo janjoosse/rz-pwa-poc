@@ -1,4 +1,4 @@
-import { afterNextRender, Component, inject, Signal } from '@angular/core';
+import { afterNextRender, Component, effect, inject, Signal } from '@angular/core';
 import { Entry } from '../../../core/models/content/contentful/entry';
 import { Footer } from '../../../core/models/content/footer';
 import { ContentfulService } from '../../../core/services/contentful.service';
@@ -17,6 +17,6 @@ export class FooterComponent {
     afterNextRender(() => {
       this.contentfulService.loadFooter();
       this.footer = this.contentfulService.footer;
-    })
+    });
   }
 }

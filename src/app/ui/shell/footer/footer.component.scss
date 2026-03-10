@@ -9,6 +9,7 @@
 
     @include mx.media-breakpoint-down(md) {
         grid-template-columns: 1fr;
+        padding: 32px 0;
     }
 
     &__logo {
@@ -20,6 +21,10 @@
     }
 
     &__links-collection {
+        &__title {
+            font-weight: 700;
+        }
+        
         &__list {
             list-style: none;
             padding: 0;
@@ -41,6 +46,22 @@
                 }
             }
         }
+    }
 
+    &__company-info {
+        display: grid;
+        gap: 16px;
+
+        a {
+            color: white;
+        }
+
+        &__address {
+            white-space: pre-line;
+        }
+    }
+
+    &__legal {
+        font-size: 14px;
     }
 }
