@@ -9,7 +9,7 @@ export const serverRoutes: ServerRoute[] = [
     path: 'page/:slug',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
-      const routesJson = await fetch('../../routes.json').then(res => res.json());
+      const routesJson = await fetch('routes.json').then(res => res.json());
       return routesJson.routes.map((route: { slug: string }) => ({ slug: route.slug }));
     }
   },
