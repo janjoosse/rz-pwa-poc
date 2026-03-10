@@ -1,6 +1,6 @@
 import { inject, Injectable, Injector, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { FOOTER, HEADER, HOMEPAGEHERO } from '../models/content/content-types';
 import { Entry } from '../models/content/contentful/entry';
 import { Footer } from '../models/content/footer';
@@ -23,6 +23,7 @@ export class ContentfulService {
 
   // HOMEPAGEHERO
   homepageHero = toSignal(this.cfClient.getEntries<HomepageHero>({ contentType: HOMEPAGEHERO, limit: 1, include: 2 }).pipe(
+    tap((heroes) => console.log('Fetched homepage hero:', heroes)),
     map(heroes => heroes.length > 0 ? heroes[0] : undefined),
   ));
   // HOMEPAGESECTIONS

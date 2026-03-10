@@ -1,6 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ContentfulService } from './core/services/contentful.service';
+import { SeoService } from './core/services/seo.service';
 import { FooterComponent } from './ui/shell/footer/footer.component';
 import { HeaderComponent } from "./ui/shell/header/header.component";
 
@@ -11,8 +12,12 @@ import { HeaderComponent } from "./ui/shell/header/header.component";
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('rz-pwa-poc');
   private contentfulService = inject(ContentfulService);
+  private seoService = inject(SeoService);
 
   header = this.contentfulService.header;
+
+  constructor() {
+    this.seoService.updateMetadata();
+  }
 }
