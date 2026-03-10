@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomePageComponent } from './ui/pages/home-page/home-page.component';
-import { TestPageComponent } from './ui/pages/test-page/test-page.component';
+import { ContentPageComponent } from './ui/pages/content-page/content-page.component';
 
 export const routes: Routes = [
     {
@@ -9,8 +9,8 @@ export const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'test',
-        component: TestPageComponent,
+        path: 'page/:slug',
+        component: ContentPageComponent,
         pathMatch: 'full'
     },
 ];

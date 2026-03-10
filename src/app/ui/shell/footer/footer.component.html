@@ -11,7 +11,7 @@
                             <ul class="footer__content__columns__links-collection__list">
                                 @for (link of linksCollection.fields.links; track link.sys.id) {
                                     <li class="footer__content__columns__links-collection__list__item">
-                                        <a  href="{{ link.fields.url }}" class="footer__content__columns__links-collection__list__item__link">
+                                        <a  routerLink="{{ link.fields.url }}" class="footer__content__columns__links-collection__list__item__link">
                                             {{ link.fields.name }}
                                         </a>
                                     </li>
@@ -38,7 +38,7 @@
                     <span>{{ ft!.fields.copyrightText }}</span>
                     <div class="footer__content__legal__links">
                         @for (link of ft!.fields.legalLinkList.fields.links; track link.sys.id; let isLast = $last) {
-                            <a href="{{ link.fields.url }}" class="footer__content__legal__links__link">
+                            <a routerLink="{{ link.fields.url }}" class="footer__content__legal__links__link">
                                 {{ link.fields.name }}
                             </a> 
                             @if (!isLast) {

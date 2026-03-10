@@ -2,7 +2,7 @@
     @for (link of header()?.fields?.navigationTop?.fields?.links; track link.sys.id) {
         @let navigationLink = $any(link).fields;
         <a 
-            [href]="navigationLink.url"
+            [routerLink]="navigationLink.url"
             class="top-navigation__link"
         >
             {{ navigationLink.name }}
@@ -31,7 +31,7 @@
     @for (link of header()?.fields?.navigationMain?.fields?.links; track link.sys.id) {
         @let navigationLink = $any(link).fields;
         <a 
-            [href]="navigationLink.url"
+            [routerLink]="navigationLink.url"
             class="main-navigation__link"
         >
             {{ navigationLink.name }}

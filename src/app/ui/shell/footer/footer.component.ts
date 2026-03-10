@@ -2,10 +2,11 @@ import { afterNextRender, Component, effect, inject, Signal } from '@angular/cor
 import { Entry } from '../../../core/models/content/contentful/entry';
 import { Footer } from '../../../core/models/content/footer';
 import { ContentfulService } from '../../../core/services/contentful.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'rz-footer',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
