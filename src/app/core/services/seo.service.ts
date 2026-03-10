@@ -17,14 +17,32 @@ export class SeoService {
     effect(() => {
       const currentRoute = this.routerService.routerStartEvent();
       switch (currentRoute?.url) {
+        // HOMEPAGE
         case '/':
           const homepageHero = this.contentfulService.homepageHero();
           this.title.setTitle(homepageHero?.fields.metadata.fields.seoTitle || 'Default Title');
           this.meta.updateTag({ name: 'description', content: homepageHero?.fields.metadata.fields.metaDescription || 'Default description' });
           break;
+        // TEST PAGE
         case '/test':
           this.title.setTitle('Test Page');
           break;
+
+        // TODO:
+        // Product routes
+        // Content routes
+        // Set og:title
+        // Set og:description
+        // Set og:locale
+        // Set og:locale:alternate
+        // Set og:image
+        // Set og:url
+        // Set twitter:card
+        // Set twitter:title
+        // Set twitter:description
+        // Set twitter:image
+        // Set canonical URL
+        // Set hreflang tags
       }
     });
   }
