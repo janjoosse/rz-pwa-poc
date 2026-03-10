@@ -1,67 +1,94 @@
 @use 'mixins' as mx;
 
 .footer {
-    color: #ffffff;
-    padding: 64px 0;
-    display: grid;
-    grid-template-columns: minmax(198px, 2fr) repeat(3, 1fr);
-    gap: 30px;
-
-    @include mx.media-breakpoint-down(md) {
-        grid-template-columns: 1fr;
-        padding: 32px 0;
-    }
-
-    &__logo {
-        max-height: 40px;
-
+    &__content {
+        display: grid;
+        gap: 48px;
+        color: #ffffff;
+        padding: 64px 0;
+        
         @include mx.media-breakpoint-down(md) {
-            max-height: 30px;
-        }
-    }
-
-    &__links-collection {
-        &__title {
-            font-weight: 700;
+            padding: 32px 0;
         }
         
-        &__list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        &__columns {
+            display: grid;
+            grid-template-columns: minmax(198px, 2fr) repeat(3, 1fr);
+            gap: 30px;
 
-            &__item {
-                margin-bottom: 16px;
-                &:last-child {
-                    margin-bottom: 0;
+            @include mx.media-breakpoint-down(md) {
+                grid-template-columns: 1fr;
+            }
+            
+            &__logo {
+                max-height: 40px;
+        
+                @include mx.media-breakpoint-down(md) {
+                    max-height: 30px;
                 }
-
-                &__link {
-                    color: #ffffff;
-                    text-decoration: none;
-
-                    &:hover {
-                        text-decoration: underline;
+            }
+        
+            &__links-collection {
+                &__title {
+                    font-weight: 700;
+                }
+                
+                &__list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+        
+                    &__item {
+                        margin-bottom: 16px;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+        
+                        &__link {
+                            color: #ffffff;
+                            text-decoration: none;
+        
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
                     }
                 }
             }
+        
+            &__company-info {
+                display: grid;
+                gap: 16px;
+        
+                a {
+                    color: white;
+                }
+        
+                &__address {
+                    white-space: pre-line;
+                }
+            }
         }
-    }
+    
+        &__legal {
+            font-size: 14px;
+            display: grid;
+            gap: 16px;
 
-    &__company-info {
-        display: grid;
-        gap: 16px;
-
-        a {
-            color: white;
+            &__links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            a {
+                color: white;
+                text-decoration: none;
+    
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
-
-        &__address {
-            white-space: pre-line;
-        }
-    }
-
-    &__legal {
-        font-size: 14px;
     }
 }
