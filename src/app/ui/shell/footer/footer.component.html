@@ -24,7 +24,7 @@
                         <a href="tel:{{ ft!.fields.company.fields.phone }}">
                             {{ ft!.fields.company.fields.phone }}
                         </a>
-                        <a href="tel:{{ ft!.fields.company.fields.eMail }}">
+                        <a href="mailto:{{ ft!.fields.company.fields.eMail }}">
                             {{ ft!.fields.company.fields.eMail }}
                         </a>
                         <span class="footer__content__columns__company-info__address">
@@ -33,16 +33,26 @@
                     </div> 
                 </div>
             </div>
-            <div class="footer__content__legal">
-                <span>{{ ft!.fields.copyrightText }}</span>
-                <div class="footer__content__legal__links">
-                    @for (link of ft!.fields.legalLinkList.fields.links; track link.sys.id; let isLast = $last) {
-                        <a routerLink="{{ link.fields.url }}" class="footer__content__legal__links__link">
-                            {{ link.fields.name }}
-                        </a> 
-                        @if (!isLast) {
-                            <span> | </span>
+            <div class="footer__content__secondary-links">
+                <div class="footer__content__secondary-links__legal">
+                    <span>{{ ft!.fields.copyrightText }}</span>
+                    <div class="footer__content__secondary-links__legal__links">
+                        @for (link of ft!.fields.legalLinkList.fields.links; track link.sys.id; let isLast = $last) {
+                            <a routerLink="{{ link.fields.url }}">
+                                {{ link.fields.name }}
+                            </a> 
+                            @if (!isLast) {
+                                <span> | </span>
+                            }
                         }
+                    </div>
+                </div>
+                <div class="footer__content__secondary-links__social">
+                    @let mediaLinks = ft!.fields.company.fields.mediaContacts;
+                    @for (link of mediaLinks; track link.sys.id) {
+                        <a href="{{ link.fields.url }}" target="_blank" rel="noopener noreferrer">
+                            <fa-icon [icon]="['fab', link.fields.mediaName | socialIconMapper ]" class="footer__content__secondary-links__social__icon" />
+                        </a>
                     }
                 </div>
             </div>

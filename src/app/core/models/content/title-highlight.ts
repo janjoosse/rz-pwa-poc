@@ -1,5 +1,5 @@
 import { Entry } from "./contentful/entry";
-import { MediaWrapper } from "./mediaWrapper";
+import { MediaWrapper } from "./media-wrapper";
 
 export interface TitleHighlight {
     entryTitle: string;

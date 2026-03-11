@@ -1,7 +1,8 @@
 import { CompanyType } from "./company-type";
 import { Entry } from "./contentful/entry";
 import { Country } from "./country";
-import { MediaWrapper } from "./mediaWrapper";
+import { MediaWrapper } from "./media-wrapper";
+import { MediaContact } from './media-contact'
 
 export interface Company {
     entryTitle: string;
@@ -19,4 +20,5 @@ export interface Company {
     phone: string;
     logo: Entry<MediaWrapper>;
     whatsAppPhone: string;
+    mediaContacts: Entry<MediaContact>[];
 }
