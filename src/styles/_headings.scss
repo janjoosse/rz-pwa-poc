@@ -1,0 +1,74 @@
+@use 'mixins';
+
+// Heading font sizes
+$font-size-h1: 48px;
+$font-size-h1-sm: 36px;
+$font-size-h2: 40px;
+$font-size-h2-sm: 32px;
+$font-size-h3: 32px;
+$font-size-h3-sm: 28px;
+$font-size-h4: 28px;
+$font-size-h4-sm: 24px;
+$font-size-h5: 24px;
+$font-size-h5-sm: 20px;
+$font-size-h6: 20px;
+$font-size-h6-sm: 18px;
+
+h1 {
+    font-size: $font-size-h1;
+    @include media-breakpoint-down(sm) {
+        font-size: $font-size-h1-sm;
+    }
+}
+
+h2 {
+    font-size: $font-size-h2;
+    @include media-breakpoint-down(sm) {
+        font-size: $font-size-h2-sm;
+    }
+}
+
+h3 {
+    font-size: $font-size-h3;
+    @include media-breakpoint-down(sm) {
+        font-size: $font-size-h3-sm;
+    }
+}
+
+h4 {
+    font-size: $font-size-h4;
+    @include media-breakpoint-down(sm) {
+        font-size: $font-size-h4-sm;
+    }
+}
+
+h5 {
+    font-size: $font-size-h5;
+    @include media-breakpoint-down(sm) {
+        font-size: $font-size-h5-sm;
+    }
+}
+
+h6 {
+    font-size: $font-size-h6;
+    @include media-breakpoint-down(sm) {
+        font-size: $font-size-h6-sm;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-family-bold;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+b,
+strong {
+    font-family: $font-family-bold;
+    font-weight: 700;
+}

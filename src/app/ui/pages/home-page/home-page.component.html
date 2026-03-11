@@ -1,1 +1,16 @@
-<div class="home-page">{{ homepageHero()?.fields?.metadata }}</div>
+<div class="home-page">
+    <div class="home-page__hero wide-bg-color--primary">
+        <h1>
+            {{ homepageHero()?.fields?.hero?.fields?.title }} <strong>{{ homepageHero()?.fields?.hero?.fields?.titleHighlight }}</strong>
+        </h1>
+        <!--CLEAN UP HERO, remove one layer-->
+        <div class="home-page__hero__images">
+            <img 
+                class="home-page__hero__images__primary"
+                src="{{ homepageHero()!.fields.hero!.fields!.primaryImage!.fields!.asset[0].src }}" 
+                alt="{{ homepageHero()!.fields.hero!.fields!.primaryImage!.fields!.altText }}"
+                fetchpriority="high"
+            />
+        </div>
+    </div>
+</div>
