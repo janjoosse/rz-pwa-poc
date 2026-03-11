@@ -1,13 +1,13 @@
 import { inject, Injectable, Injector, signal, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, tap } from 'rxjs';
+import { ContentPage } from '../models/content/content-page';
 import { CONTENT_PAGE, FOOTER, HEADER, HOMEPAGEHERO } from '../models/content/content-types';
 import { Entry } from '../models/content/contentful/entry';
 import { Footer } from '../models/content/footer';
 import { Header } from '../models/content/header';
 import { HomepageHero } from '../models/content/homepage-hero';
 import { ContentfulHttpClientService } from './contentful-http-client.service';
-import { ContentPage } from '../models/content/content-page';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +15,8 @@ import { ContentPage } from '../models/content/content-page';
 export class ContentfulService {
   private cfClient = inject(ContentfulHttpClientService);
   private injector = inject(Injector);
-  private contentPageSig = signal<Entry<ContentPage> | undefined>(undefined);
-  contentPage = this.contentPageSig.asReadonly();
+  private contentPageSrc = signal<Entry<ContentPage> | undefined>(undefined);
+  contentPage = this.contentPageSrc.asReadonly();
   footer?: Signal<Entry<Footer> | undefined>;
 
   // HEADER
@@ -37,7 +37,7 @@ export class ContentfulService {
     console.log(`Loading content page for slug: ${slug}`);
     this.cfClient.getEntries<ContentPage>({ contentType: CONTENT_PAGE, limit: 1, include: 2, query: `fields.slug=${slug}` }).pipe(
       tap(pages => {
-        this.contentPageSig.set(pages.length > 0 ? pages[0] : undefined);
+        this.contentPageSrc.set(pages.length > 0 ? pages[0] : undefined);
       }),
     ).subscribe();
   }

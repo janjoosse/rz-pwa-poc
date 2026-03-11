@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DoCheck, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ContentfulService } from './core/services/contentful.service';
 import { SeoService } from './core/services/seo.service';
@@ -9,9 +9,10 @@ import { HeaderComponent } from "./ui/shell/header/header.component";
   selector: 'rz-root',
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class App {
+export class App implements DoCheck {
   private contentfulService = inject(ContentfulService);
   private seoService = inject(SeoService);
 
@@ -19,5 +20,9 @@ export class App {
 
   constructor() {
     this.seoService.updateMetadata();
+  }
+
+  ngDoCheck(): void {
+    console.log('AppComponent ngDoCheck');
   }
 }
