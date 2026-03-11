@@ -1,8 +1,8 @@
-import { afterNextRender, Component, effect, inject, Signal } from '@angular/core';
+import { afterNextRender, Component, DoCheck, inject, Signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Entry } from '../../../core/models/content/contentful/entry';
 import { Footer } from '../../../core/models/content/footer';
 import { ContentfulService } from '../../../core/services/contentful.service';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'rz-footer',
@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
-export class FooterComponent {
+export class FooterComponent implements DoCheck {
   private contentfulService = inject(ContentfulService);
   footer?: Signal<Entry<Footer> | undefined>;
 
@@ -19,5 +19,9 @@ export class FooterComponent {
       this.contentfulService.loadFooter();
       this.footer = this.contentfulService.footer;
     });
+  }
+
+  ngDoCheck(): void {
+    console.log('FooterComponent ngDoCheck');
   }
 }
