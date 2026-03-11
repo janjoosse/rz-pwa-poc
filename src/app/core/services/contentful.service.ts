@@ -1,5 +1,5 @@
-import { inject, Injectable, Injector, signal, Signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { DestroyRef, inject, Injectable, Injector, signal, Signal } from '@angular/core';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { map, tap } from 'rxjs';
 import { ContentPage } from '../models/content/content-page';
 import { CONTENT_PAGE, FOOTER, HEADER, HOMEPAGEHERO } from '../models/content/content-types';
@@ -13,6 +13,7 @@ import { ContentfulHttpClientService } from './contentful-http-client.service';
   providedIn: 'root',
 })
 export class ContentfulService {
+  private destroyRef = inject(DestroyRef);
   private cfClient = inject(ContentfulHttpClientService);
   private injector = inject(Injector);
   private contentPageSrc = signal<Entry<ContentPage> | undefined>(undefined);
@@ -39,6 +40,7 @@ export class ContentfulService {
       tap(pages => {
         this.contentPageSrc.set(pages.length > 0 ? pages[0] : undefined);
       }),
+      takeUntilDestroyed(this.destroyRef)
     ).subscribe();
   }
 
@@ -52,6 +54,4 @@ export class ContentfulService {
       { injector: this.injector }
     );
   }
-
-  // TODO
 }

@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, DoCheck, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ContentfulService } from '../../../core/services/contentful.service';
 
@@ -8,8 +8,9 @@ import { ContentfulService } from '../../../core/services/contentful.service';
   imports: [NgClass, RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent implements DoCheck {
+export class HeaderComponent {
   private contentfulService = inject(ContentfulService);
   
   header = this.contentfulService.header;
@@ -17,9 +18,5 @@ export class HeaderComponent implements DoCheck {
   
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
-  }
-  
-  ngDoCheck(): void {
-    console.log('HeaderComponent ngDoCheck');
   }
 }

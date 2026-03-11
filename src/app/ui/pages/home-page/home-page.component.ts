@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DoCheck, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ContentfulService } from '../../../core/services/contentful.service';
 
 @Component({
@@ -8,11 +8,7 @@ import { ContentfulService } from '../../../core/services/contentful.service';
   styleUrl: './home-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePageComponent implements DoCheck {
+export class HomePageComponent {
   private contentfulService = inject(ContentfulService);
   homepageHero = this.contentfulService.homepageHero;
-
-  ngDoCheck(): void {
-    console.log('HomePageComponent ngDoCheck');
-  }
 }

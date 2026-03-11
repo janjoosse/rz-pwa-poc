@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DoCheck, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ContentfulService } from './core/services/contentful.service';
 import { SeoService } from './core/services/seo.service';
@@ -12,7 +12,7 @@ import { HeaderComponent } from "./ui/shell/header/header.component";
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class App implements DoCheck {
+export class App {
   private contentfulService = inject(ContentfulService);
   private seoService = inject(SeoService);
 
@@ -20,9 +20,5 @@ export class App implements DoCheck {
 
   constructor() {
     this.seoService.updateMetadata();
-  }
-
-  ngDoCheck(): void {
-    console.log('AppComponent ngDoCheck');
   }
 }
