@@ -50,10 +50,11 @@
                 <div class="footer__content__secondary-links__social">
                     @let mediaLinks = ft!.fields.company.fields.mediaContacts;
                     @for (link of mediaLinks; track link.sys.id) {
-                        <a href="{{ link.fields.url }}" target="_blank" rel="noopener noreferrer">
-                            <fa-icon [icon]="['fab', link.fields.mediaName | socialIconMapper ]" class="footer__content__secondary-links__social__icon" />
+                        <a name="" href="{{ link.fields.url }}" target="_blank" rel="noopener noreferrer">
+                            <fa-icon [icon]="['fab', link.fields.mediaName | socialMediaNameIconMapper ]" class="footer__content__secondary-links__social__icon" />
                         </a>
                     }
+                    <fa-icon [icon]="['fab', 'tiktok']" />
                 </div>
             </div>
         </div>

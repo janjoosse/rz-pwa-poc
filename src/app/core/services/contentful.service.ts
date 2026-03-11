@@ -27,7 +27,6 @@ export class ContentfulService {
 
   // HOMEPAGEHERO
   homepageHero = toSignal(this.cfClient.getEntries<HomepageHero>({ contentType: HOMEPAGEHERO, limit: 1, include: 2 }).pipe(
-    tap((heroes) => console.log('Fetched homepage hero:', heroes)),
     map(heroes => heroes.length > 0 ? heroes[0] : undefined),
   ));
   // HOMEPAGESECTIONS
@@ -35,7 +34,6 @@ export class ContentfulService {
 
   // CONTENT PAGES
   loadContentPage(slug: string) {
-    console.log(`Loading content page for slug: ${slug}`);
     this.cfClient.getEntries<ContentPage>({ contentType: CONTENT_PAGE, limit: 1, include: 2, query: `fields.slug=${slug}` }).pipe(
       tap(pages => {
         this.contentPageSrc.set(pages.length > 0 ? pages[0] : undefined);
@@ -48,7 +46,6 @@ export class ContentfulService {
   loadFooter() {
     this.footer = toSignal(
       this.cfClient.getEntries<Footer>({ contentType: FOOTER, limit: 1, include: 2 }).pipe(
-        tap((footers) => console.log('Fetched footer:', footers)),
         map(footers => footers.length > 0 ? footers[0] : undefined),
       ),
       { injector: this.injector }

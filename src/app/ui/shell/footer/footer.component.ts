@@ -4,11 +4,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Entry } from '../../../core/models/content/contentful/entry';
 import { Footer } from '../../../core/models/content/footer';
 import { ContentfulService } from '../../../core/services/contentful.service';
-import { SocialIconMapperPipe } from '../../../core/pipes/social-icon-mapper-pipe';
+import { SocialMediaNameIconMapperPipe } from '../../../core/pipes/social-icon-mapper-pipe';
 
 @Component({
   selector: 'rz-footer',
-  imports: [RouterLink, FontAwesomeModule, SocialIconMapperPipe],
+  imports: [RouterLink, FontAwesomeModule, SocialMediaNameIconMapperPipe],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
