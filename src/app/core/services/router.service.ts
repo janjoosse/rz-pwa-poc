@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { filter } from 'rxjs';
 export class RouterService {
   private router = inject(Router);
 
-  routerStartEvent = toSignal(this.router.events.pipe(
-    filter(event => event instanceof NavigationStart),
+  routerEndEvent = toSignal(this.router.events.pipe(
+    filter(event => event instanceof NavigationEnd),
   ));
 }

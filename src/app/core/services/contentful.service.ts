@@ -1,4 +1,4 @@
-import { inject, Injectable, Injector, Signal } from '@angular/core';
+import { inject, Injectable, Injector, signal, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, tap } from 'rxjs';
 import { CONTENT_PAGE, FOOTER, HEADER, HOMEPAGEHERO } from '../models/content/content-types';
@@ -15,8 +15,9 @@ import { ContentPage } from '../models/content/content-page';
 export class ContentfulService {
   private cfClient = inject(ContentfulHttpClientService);
   private injector = inject(Injector);
+  private contentPageSig = signal<Entry<ContentPage> | undefined>(undefined);
+  contentPage = this.contentPageSig.asReadonly();
   footer?: Signal<Entry<Footer> | undefined>;
-  contentPage?: Signal<Entry<any> | undefined>; // TODO: type
 
   // HEADER
   header = toSignal(this.cfClient.getEntries<Header>({ contentType: HEADER, limit: 1, include: 2 }).pipe(
@@ -33,12 +34,12 @@ export class ContentfulService {
 
   // CONTENT PAGES
   loadContentPage(slug: string) {
-    this.contentPage = toSignal(this.cfClient.getEntries<ContentPage>({ contentType: CONTENT_PAGE, limit: 1, include: 2, query: `fields.slug=${slug}` }).pipe(
-      tap((pages) => console.log(`Fetched content page for slug "${slug}":`, pages)),
-      map(pages => pages.length > 0 ? pages[0] : undefined),
-    ),
-    { injector: this.injector }
-    );
+    console.log(`Loading content page for slug: ${slug}`);
+    this.cfClient.getEntries<ContentPage>({ contentType: CONTENT_PAGE, limit: 1, include: 2, query: `fields.slug=${slug}` }).pipe(
+      tap(pages => {
+        this.contentPageSig.set(pages.length > 0 ? pages[0] : undefined);
+      }),
+    ).subscribe();
   }
 
   // FOOTER

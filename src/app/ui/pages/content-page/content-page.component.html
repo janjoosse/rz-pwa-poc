@@ -1,1 +1,6 @@
-<p>content-page works!, with slug: {{ slug() }}</p>
+<div>
+    @if (contentPage() && contentPage()!.fields) {
+        <h1>{{ contentPage()?.fields?.title }}</h1>
+        <div>Slug: {{ contentPage()?.fields?.slug }}</div>
+    }
+</div>

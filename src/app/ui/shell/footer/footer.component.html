@@ -4,7 +4,7 @@
             @let ft = footer();
             <div class="footer__content">
                 <div class="footer__content__columns">
-                    <img src="img/logo/RZ_logo_white.svg" alt="Rijk Zwaan Logo White" class="footer__content__columns__logo" fetchpriority="high"/>
+                    <img src="img/logo/RZ_logo_white.svg" alt="Rijk Zwaan Logo White" class="footer__content__columns__logo" fetchpriority="high" routerLink="/"/>
                     @for (linksCollection of ft!.fields.collection; track linksCollection.sys.id) {
                         <div class="footer__content__columns__links-collection">
                             <h3><strong class="footer__content__columns__links-collection__title">{{ linksCollection.fields.name }}</strong></h3>

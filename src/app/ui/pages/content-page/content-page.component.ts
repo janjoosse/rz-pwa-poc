@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContentfulService } from '../../../core/services/contentful.service';
 import { map } from 'rxjs';
@@ -14,8 +14,11 @@ export class ContentPageComponent {
   private activatedRoute = inject(ActivatedRoute);
   private contentfulService = inject(ContentfulService);
   slug = toSignal(this.activatedRoute.params.pipe(map(params => params['slug'])));
+  contentPage = this.contentfulService.contentPage;
 
   constructor() {
-    console.log('Slug:', this.slug);
+    effect(() => {
+      this.contentfulService.loadContentPage(this.slug());
+    })
   }
 }

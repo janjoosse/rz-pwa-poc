@@ -13,20 +13,22 @@ export class SeoService {
   private routerService = inject(RouterService);
 
   updateMetadata() {
-    // Update SEO metadata
+    // Homepage
     effect(() => {
-      const currentRoute = this.routerService.routerStartEvent();
-      switch (currentRoute?.url) {
-        // HOMEPAGE
-        case '/':
-          const homepageHero = this.contentfulService.homepageHero();
-          this.title.setTitle(homepageHero?.fields.metadata.fields.seoTitle || 'Default Title');
-          this.meta.updateTag({ name: 'description', content: homepageHero?.fields.metadata.fields.metaDescription || 'Default description' });
-          break;
-        // TEST PAGE
-        case '/test':
-          this.title.setTitle('Test Page');
-          break;
+      const routerEvent = this.routerService.routerEndEvent();
+      if (routerEvent?.url === '/') {
+        const homepageHero = this.contentfulService.homepageHero();
+        this.title.setTitle(homepageHero?.fields.metadata.fields.seoTitle || 'Default Title');
+        this.meta.updateTag({ name: 'description', content: homepageHero?.fields.metadata.fields.metaDescription || 'Default description' });
+      }
+    });
+    
+    // Content pages
+    effect(() => {
+      const contentPage = this.contentfulService.contentPage();
+      this.title.setTitle(contentPage?.fields.metadata.fields.seoTitle || 'Default Title');
+      this.meta.updateTag({ name: 'description', content: contentPage?.fields.metadata.fields.metaDescription || 'Default description' });
+    });
 
         // TODO:
         // Product routes
@@ -43,7 +45,5 @@ export class SeoService {
         // Set twitter:image
         // Set canonical URL
         // Set hreflang tags
-      }
-    });
   }
 }
