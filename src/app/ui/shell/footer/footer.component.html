@@ -6,31 +6,25 @@
                 <img src="img/logo/RZ_logo_white.svg" alt="Rijk Zwaan Logo White" class="footer__content__columns__logo" fetchpriority="high" routerLink="/"/>
                 @for (linksCollection of ft!.fields.collection; track linksCollection.sys.id) {
                     <div class="footer__content__columns__links-collection">
-                        <h3><strong class="footer__content__columns__links-collection__title">{{ linksCollection.fields.name }}</strong></h3>
-                        <ul class="footer__content__columns__links-collection__list">
-                            @for (link of linksCollection.fields.links; track link.sys.id) {
-                                <li class="footer__content__columns__links-collection__list__item">
-                                    <a  routerLink="{{ link.fields.url }}" class="footer__content__columns__links-collection__list__item__link">
-                                        {{ link.fields.name }}
-                                    </a>
-                                </li>
-                            }
-                        </ul>
+                        <h6><strong class="footer__content__columns__links-collection__title">{{ linksCollection.fields.name }}</strong></h6>
+                        @for (link of linksCollection.fields.links; track link.sys.id) {
+                            <a  routerLink="{{ link.fields.url }}" class="footer__content__columns__links-collection__item">
+                                {{ link.fields.name }}
+                            </a>
+                        }
                     </div>
                 }
-                <div class="footer__content__columns__company">
-                    <h3><strong class="footer__content__columns__company__title">{{ ft!.fields.company.fields.name }}</strong></h3>
-                    <div class="footer__content__columns__company-info">
-                        <a href="tel:{{ ft!.fields.company.fields.phone }}">
-                            {{ ft!.fields.company.fields.phone }}
-                        </a>
-                        <a href="mailto:{{ ft!.fields.company.fields.eMail }}">
-                            {{ ft!.fields.company.fields.eMail }}
-                        </a>
-                        <span class="footer__content__columns__company-info__address">
-                            {{ ft!.fields.company.fields.address }}
-                        </span>
-                    </div> 
+                <div class="footer__content__columns__company-info">
+                    <h6><strong>{{ ft!.fields.company.fields.name }}</strong></h6>
+                    <a class="footer__content__columns__company-info__item" href="tel:{{ ft!.fields.company.fields.phone }}">
+                        {{ ft!.fields.company.fields.phone }}
+                    </a>
+                    <a class="footer__content__columns__company-info__item" href="mailto:{{ ft!.fields.company.fields.eMail }}">
+                        {{ ft!.fields.company.fields.eMail }}
+                    </a>
+                    <span class="footer__content__columns__company-info__item--preline">
+                        {{ ft!.fields.company.fields.address }}
+                    </span>
                 </div>
             </div>
             <div class="footer__content__secondary-links">

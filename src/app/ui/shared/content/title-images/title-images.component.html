@@ -1,0 +1,18 @@
+<div class="title-images">
+    @let img1 = primaryImage();
+    @let img2 = secondaryImage();
+    @if (img1 && img2) {
+        <img 
+            class="title-images__secondary"
+            src="{{ img2?.fields?.asset?.[0]?.src }}" 
+            alt="{{ img2?.fields?.altText }}"
+            fetchpriority="high"
+        />
+        <img 
+            class="title-images__primary"
+            src="{{ img1?.fields?.asset?.[0]?.src }}" 
+            alt="{{ img1?.fields?.altText }}"
+            fetchpriority="high"
+        />
+    }
+</div>

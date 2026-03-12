@@ -1,0 +1,35 @@
+<div class="home-page">
+    @if (homepageHero()) {
+        <!--TODO CLEAN UP HERO, remove one layer-->
+        @let hero = homepageHero()?.fields?.hero?.fields;
+        <div class="home-page__title-section wide-bg-color--primary">
+            <div class="home-page__title-section__text">
+                <h1>
+                    {{ hero?.title }} <strong>{{ hero?.titleHighlight }}</strong>
+                </h1>
+                <div class="home-page__title-section__text__description">
+                    We want to actively contribute to the world's food supply and stimulate fruit and vegetable consumption by laying the foundations for healthy and appealing fruits and vegetables. TODO: RichText
+                </div>
+                <div>And button here</div>
+            </div>
+            <rz-title-images 
+                [primaryImage]="hero?.primaryImage" 
+                [secondaryImage]="hero?.secondaryImage"
+            />
+            <!-- <div class="home-page__title-section__images">
+                <img 
+                    class="home-page__title-section__images__secondary"
+                    src="{{ hero?.secondaryImage?.fields?.asset?.[0]?.src }}" 
+                    alt="{{ hero?.secondaryImage?.fields?.altText }}"
+                    fetchpriority="high"
+                />
+                <img 
+                    class="home-page__title-section__images__primary"
+                    src="{{ hero?.primaryImage?.fields?.asset?.[0]?.src }}" 
+                    alt="{{ hero?.primaryImage?.fields?.altText }}"
+                    fetchpriority="high"
+                />
+            </div> -->
+        </div>
+    }
+</div>

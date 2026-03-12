@@ -1,4 +1,4 @@
-// _variables.scss
+// Breakpoints
 $breakpoints: (
   xs: 0,
   sm: 576px,    // Mobile landscape / Small tablets
@@ -8,3 +8,9 @@ $breakpoints: (
   xxl: 1400px   // Extra large screens
 );
 
+// Fonts
+$font-family-regular: 'Okta Neue Regular', 'Noto Sans', 'Arial', sans-serif;
+$font-family-bold: 'Okta Neue Bold', 'Noto Sans Bold', 'Arial', sans-serif;
+$font-family-medium: 'Okta Neue Medium', 'Noto Sans Bold', 'Arial', sans-serif;
+$font-family-light: 'Okta Neue Light', 'Noto Sans Light', 'Arial', sans-serif;
+$font-family-semibold: 'Okta Neue Semi', 'Noto Sans Semi', 'Arial', sans-serif;
