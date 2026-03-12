@@ -1,41 +1,41 @@
 @use 'mixins' as mx;
 
-.home-page {
-    &__title-section {
-        color: #ffffff;
+.title-section {
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 0;
+
+    @include mx.media-breakpoint-down(md) {
+        align-items: stretch;
+        display: flex;
+        flex-flow: column-reverse;
+        gap: 0;
+        height: 100%;
+    }
+
+    &__text {
         display: grid;
-        grid-template-columns: 1fr 2fr;
         gap: 2rem;
-        align-items: center;
         padding: 2rem 0;
+        align-items: start;
+        width: 32.25rem;
 
         @include mx.media-breakpoint-down(md) {
-            display: flex;
-            flex-flow: column-reverse;
-            gap: 0;
-            height: 100%;
+            align-items: stretch;
+            gap: 24px;
+            padding: 24px 0 0 0;
+            width: 100%;
         }
 
-        &__text {
-            display: grid;
-            gap: 2rem;
-            padding: 2rem 0;
-            align-items: start;
-            width: 32.25rem;
-
-            @include mx.media-breakpoint-down(md) {
-                gap: 24px;
-                padding: 24px 0 0 0;
-                width: 100%;
-            }
-
-            &__description {
-                margin: 0;
-                font-size: 1.125rem;
-                font-weight: 500;
-                line-height: 1.6;
-                letter-spacing: 0;
-            }
+        &__description {
+            margin: 0;
+            font-size: 1.125rem;
+            font-weight: 500;
+            line-height: 1.6;
+            letter-spacing: 0;
         }
     }
 }

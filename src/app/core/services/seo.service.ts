@@ -18,16 +18,20 @@ export class SeoService {
       const routerEvent = this.routerService.routerEndEvent();
       if (routerEvent?.url === '/') {
         const homepageHero = this.contentfulService.homepageHero();
-        this.title.setTitle(homepageHero?.fields.metadata.fields.seoTitle || 'Default Title');
-        this.meta.updateTag({ name: 'description', content: homepageHero?.fields.metadata.fields.metaDescription || 'Default description' });
+        if (homepageHero) {
+          this.title.setTitle(homepageHero.fields.metadata.fields.seoTitle);
+          this.meta.updateTag({ name: 'description', content: homepageHero.fields.metadata.fields.metaDescription });
+        }
       }
     });
     
     // Content pages
     effect(() => {
       const contentPage = this.contentfulService.contentPage();
-      this.title.setTitle(contentPage?.fields.metadata.fields.seoTitle || 'Default Title');
-      this.meta.updateTag({ name: 'description', content: contentPage?.fields.metadata.fields.metaDescription || 'Default description' });
+      if (contentPage) {
+        this.title.setTitle(contentPage.fields.metadata.fields.seoTitle);
+        this.meta.updateTag({ name: 'description', content: contentPage.fields.metadata.fields.metaDescription });
+      }
     });
 
         // TODO:

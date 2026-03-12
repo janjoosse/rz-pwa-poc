@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
 import { ContentfulService } from '../../../../core/services/contentful.service';
 import { TitleImagesComponent } from "../../../shared/content/title-images/title-images.component";
 
