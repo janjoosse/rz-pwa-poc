@@ -8,7 +8,7 @@
                     <div class="footer__content__columns__links-collection">
                         <h6><strong class="footer__content__columns__links-collection__title">{{ linksCollection.fields.name }}</strong></h6>
                         @for (link of linksCollection.fields.links; track link.sys.id) {
-                            <a  routerLink="{{ link.fields.url }}" class="footer__content__columns__links-collection__item">
+                            <a  [routerLink]="link.fields.url" class="footer__content__columns__links-collection__item">
                                 {{ link.fields.name }}
                             </a>
                         }
@@ -32,7 +32,7 @@
                     <span>{{ ft!.fields.copyrightText }}</span>
                     <div class="footer__content__secondary-links__legal__links">
                         @for (link of ft!.fields.legalLinkList.fields.links; track link.sys.id; let isLast = $last) {
-                            <a routerLink="{{ link.fields.url }}">
+                            <a [routerLink]="link.fields.url">
                                 {{ link.fields.name }}
                             </a> 
                             @if (!isLast) {
@@ -44,7 +44,7 @@
                 <div class="footer__content__secondary-links__social">
                     @let mediaLinks = ft!.fields.company.fields.mediaContacts;
                     @for (link of mediaLinks; track link.sys.id) {
-                        <a name="" href="{{ link.fields.url }}" target="_blank" rel="noopener noreferrer">
+                        <a [aria-label]="link.fields.mediaName + 'link'" href="{{ link.fields.url }}" target="_blank" rel="noopener noreferrer">
                             <fa-icon [icon]="['fab', link.fields.mediaName | socialMediaNameIconMapper ]" class="footer__content__secondary-links__social__icon" />
                         </a>
                     }
