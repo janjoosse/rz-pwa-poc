@@ -8,7 +8,7 @@
         padding: 64px 0;
         
         @include mx.media-breakpoint-down(md) {
-            padding: 32px 0;
+            padding: 48px 36px;
         }
         
         &__columns {
