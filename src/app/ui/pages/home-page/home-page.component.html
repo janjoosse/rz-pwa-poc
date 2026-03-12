@@ -1,16 +1,25 @@
 <div class="home-page">
-    <div class="home-page__hero wide-bg-color--primary">
-        <h1>
-            {{ homepageHero()?.fields?.hero?.fields?.title }} <strong>{{ homepageHero()?.fields?.hero?.fields?.titleHighlight }}</strong>
-        </h1>
-        <!--CLEAN UP HERO, remove one layer-->
-        <div class="home-page__hero__images">
-            <img 
-                class="home-page__hero__images__primary"
-                src="{{ homepageHero()!.fields.hero!.fields!.primaryImage!.fields!.asset[0].src }}" 
-                alt="{{ homepageHero()!.fields.hero!.fields!.primaryImage!.fields!.altText }}"
-                fetchpriority="high"
-            />
+    @if (homepageHero()) {
+        @let hero = homepageHero()?.fields?.hero?.fields;
+        <div class="home-page__hero wide-bg-color--primary">
+            <h1>
+                {{ hero?.title }} <strong>{{ hero?.titleHighlight }}</strong>
+            </h1>
+            <!--CLEAN UP HERO, remove one layer-->
+            <div class="home-page__hero__images">
+                <img 
+                    class="home-page__hero__images__secondary"
+                    src="{{ hero?.secondaryImage?.fields?.asset?.[0]?.src }}" 
+                    alt="{{ hero?.secondaryImage?.fields?.altText }}"
+                    fetchpriority="high"
+                />
+                <img 
+                    class="home-page__hero__images__primary"
+                    src="{{ hero?.primaryImage?.fields?.asset?.[0]?.src }}" 
+                    alt="{{ hero?.primaryImage?.fields?.altText }}"
+                    fetchpriority="high"
+                />
+            </div>
         </div>
-    </div>
+    }
 </div>
