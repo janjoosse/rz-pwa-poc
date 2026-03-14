@@ -15,6 +15,7 @@
         />
     </div>
 }
+<!--TODO replace by separate component-->
 @defer {
     @if (homepageSections) {
         @let sections = homepageSections()?.fields?.sections;
@@ -25,7 +26,6 @@
         }
     }
 }
-@loading {
-    <div>Loading sections...</div>
+@placeholder {
+    <div class="home-page-sections"></div>
 }
-

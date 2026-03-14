@@ -1,8 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, Signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { Entry } from '../../../core/models/content/contentful/entry';
-import { Footer } from '../../../core/models/content/footer';
 import { ContentfulService } from '../../../core/services/contentful.service';
 import { SocialMediaNameIconMapperPipe } from '../../../core/pipes/social-icon-mapper-pipe';
 
@@ -13,12 +11,7 @@ import { SocialMediaNameIconMapperPipe } from '../../../core/pipes/social-icon-m
   styleUrl: './footer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
   private contentfulService = inject(ContentfulService);
-  footer?: Signal<Entry<Footer> | undefined>;
-
-  ngOnInit(): void {
-    this.contentfulService.loadFooter();
-    this.footer = this.contentfulService.footer;
-  }
+  footer = this.contentfulService.footer;
 }

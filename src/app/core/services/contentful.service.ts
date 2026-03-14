@@ -17,28 +17,53 @@ export class ContentfulService {
   private destroyRef = inject(DestroyRef);
   private cfClient = inject(ContentfulHttpClientService);
   private injector = inject(Injector);
+
   private contentPageSrc = signal<Entry<ContentPage> | undefined>(undefined);
   contentPage = this.contentPageSrc.asReadonly();
-  footer?: Signal<Entry<Footer> | undefined>;
-  homepageSections?: Signal<Entry<HomepageSections> | undefined>;
-
+  
   // HEADER
-  header = toSignal(this.cfClient.getEntries<Header>({ contentType: HEADER, limit: 1, include: 2 }).pipe(
-    map(headers => headers.length > 0 ? headers[0] : undefined),
-  ));
-
-  // HOMEPAGEHERO
-  homepageHero = toSignal(this.cfClient.getEntries<HomepageHero>({ contentType: HOMEPAGEHERO, limit: 1, include: 2 }).pipe(
-    map(heroes => heroes.length > 0 ? heroes[0] : undefined),
-  ));
-  // HOMEPAGESECTIONS
-  loadHomepageSections() {
-    this.homepageSections = toSignal(this.cfClient.getEntries<HomepageSections>({ contentType: HOMEPAGESECTIONS, limit: 1, include: 2 }).pipe(
-      map(sections => sections.length > 0 ? sections[0] : undefined),
-    ), { injector: this.injector });
+  headerSrc?: Signal<Entry<Header> | undefined>;
+  get header() {
+    if (!this.headerSrc) {
+      this.headerSrc = toSignal(
+        this.cfClient.getEntries<Header>({ contentType: HEADER, limit: 1, include: 2 }).pipe(
+          map(headers => headers.length > 0 ? headers[0] : undefined),
+        ),
+        { injector: this.injector }
+      );
+    }
+    return this.headerSrc;
+  }
+  
+  // HOMEPAGEHERO -- TODO rewrite
+  homepageHeroSrc?: Signal<Entry<HomepageHero> | undefined>;
+  get homepageHero() {
+    if (!this.homepageHeroSrc) {
+      this.homepageHeroSrc = toSignal(
+        this.cfClient.getEntries<HomepageHero>({ contentType: HOMEPAGEHERO, limit: 1, include: 2 }).pipe(
+          map(heroes => heroes.length > 0 ? heroes[0] : undefined),
+        ),
+        { injector: this.injector }
+      );
+    }
+    return this.homepageHeroSrc;
   }
 
-  // CONTENT PAGES
+  // HOMEPAGESECTIONS -- TODO rewrite
+  homepageSectionsSrc?: Signal<Entry<HomepageSections> | undefined>;
+  get homepageSections() {
+    if (!this.homepageSectionsSrc) {
+      this.homepageSectionsSrc = toSignal(
+        this.cfClient.getEntries<HomepageSections>({ contentType: HOMEPAGESECTIONS, limit: 1, include: 2 }).pipe(
+          map(sections => sections.length > 0 ? sections[0] : undefined),
+        ),
+        { injector: this.injector }
+      );
+    }
+    return this.homepageSectionsSrc;
+  }
+  
+  // CONTENT PAGES -- TODO rewrite
   loadContentPage(slug: string) {
     this.cfClient.getEntries<ContentPage>({ contentType: CONTENT_PAGE, limit: 1, include: 2, query: `fields.slug=${slug}` }).pipe(
       tap(pages => {
@@ -47,14 +72,18 @@ export class ContentfulService {
       takeUntilDestroyed(this.destroyRef)
     ).subscribe();
   }
-
+  
   // FOOTER
-  loadFooter() {
-    this.footer = toSignal(
-      this.cfClient.getEntries<Footer>({ contentType: FOOTER, limit: 1, include: 2 }).pipe(
-        map(footers => footers.length > 0 ? footers[0] : undefined),
-      ),
-      { injector: this.injector }
-    );
+  footerSrc?: Signal<Entry<Footer> | undefined>;
+  get footer() {
+    if (!this.footerSrc) {
+      this.footerSrc = toSignal(
+        this.cfClient.getEntries<Footer>({ contentType: FOOTER, limit: 1, include: 2 }).pipe(
+          map(footers => footers.length > 0 ? footers[0] : undefined),
+        ),
+        { injector: this.injector }
+      );
+    }
+    return this.footerSrc;
   }
 }

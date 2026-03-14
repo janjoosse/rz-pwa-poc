@@ -21,7 +21,6 @@ export class HomePageComponent implements OnInit {
   homepageSections?: Signal<Entry<HomepageSections> | undefined>;
 
   ngOnInit(): void {
-    this.contentfulService.loadHomepageSections();
     this.homepageSections = this.contentfulService.homepageSections;
   }
 }
