@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import resolveResponse from 'contentful-resolve-response';
 import { map, Observable } from 'rxjs';
-import { environment as env } from '../../../environments/environment';
-import { ContentType } from '../models/content/content-types';
-import { ApiResult } from '../models/content/contentful/api-result';
-import { Entry } from '../models/content/contentful/entry';
+import { environment as env } from '@environments/environment';
+import { ContentType } from '@core/models/content/content-types';
+import { ApiResult } from '@core/models/content/contentful/api-result';
+import { Entry } from '@core/models/content/contentful/entry';
 
 @Injectable({
   providedIn: 'root',

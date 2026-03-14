@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { ContentfulService } from '../../../../../core/services/contentful.service';
-import { NewsListComponent } from '../../../../shared/content/news-list/news-list.component';
-import { NEWS_LIST } from '../../../../../core/models/content/content-types';
+import { ContentfulService } from '@core/services/contentful.service';
+import { NewsListComponent } from '@shared/content/news-list/news-list.component';
+import { NEWS_LIST } from '@core/models/content/content-types';
 
 @Component({
   selector: 'rz-home-page-sections',

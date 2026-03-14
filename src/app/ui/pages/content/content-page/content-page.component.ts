@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/cor
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
-import { ContentfulService } from '../../../../core/services/contentful.service';
+import { ContentfulService } from '@core/services/contentful.service';
 
 @Component({
   selector: 'rz-content-page',

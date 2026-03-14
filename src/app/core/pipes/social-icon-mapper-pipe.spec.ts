@@ -1,8 +1,8 @@
-import { SocialIconMapperPipe } from './social-icon-mapper-pipe';
+import { SocialMediaNameIconMapperPipe } from './social-media-name-icon-mapper-pipe';
 
-describe('SocialIconMapperPipe', () => {
+describe('SocialMediaNameIconMapperPipe', () => {
   it('create an instance', () => {
-    const pipe = new SocialIconMapperPipe();
+    const pipe = new SocialMediaNameIconMapperPipe();
     expect(pipe).toBeTruthy();
   });
 });

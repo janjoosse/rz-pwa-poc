@@ -1,14 +1,14 @@
 import { DestroyRef, inject, Injectable, Injector, signal, Signal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { map, tap } from 'rxjs';
-import { ContentPage } from '../models/content/content-page';
-import { CONTENT_PAGE, FOOTER, HEADER, HOMEPAGEHERO, HOMEPAGESECTIONS } from '../models/content/content-types';
-import { Entry } from '../models/content/contentful/entry';
-import { Footer } from '../models/content/footer';
-import { Header } from '../models/content/header';
-import { HomepageHero } from '../models/content/homepage-hero';
+import { ContentPage } from '@core/models/content/content-page';
+import { CONTENT_PAGE, FOOTER, HEADER, HOMEPAGEHERO, HOMEPAGESECTIONS } from '@core/models/content/content-types';
+import { Entry } from '@core/models/content/contentful/entry';
+import { Footer } from '@core/models/content/footer';
+import { Header } from '@core/models/content/header';
+import { HomepageHero } from '@core/models/content/homepage-hero';
 import { ContentfulHttpClientService } from './contentful-http-client.service';
-import { HomepageSection, HomepageSections } from '../models/content/homepage-sections';
+import { HomepageSection, HomepageSections } from '@core/models/content/homepage-sections';
 
 @Injectable({
   providedIn: 'root',

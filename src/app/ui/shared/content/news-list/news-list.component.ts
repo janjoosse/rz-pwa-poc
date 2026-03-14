@@ -1,6 +1,7 @@
-import { Component, input } from '@angular/core';
-import { Entry } from '../../../../core/models/content/contentful/entry';
-import { NewsList } from '../../../../core/models/content/news-list';
+import { Component, inject, input } from '@angular/core';
+import { Entry } from '@core/models/content/contentful/entry';
+import { NewsList } from '@core/models/content/news-list';
+import { ContentfulService } from '@core/services/contentful.service';
 
 @Component({
   selector: 'rz-news-list',
@@ -10,4 +11,5 @@ import { NewsList } from '../../../../core/models/content/news-list';
 })
 export class NewsListComponent {
   newsList = input<Entry<NewsList>>();
+  contentfulService = inject(ContentfulService);
 }

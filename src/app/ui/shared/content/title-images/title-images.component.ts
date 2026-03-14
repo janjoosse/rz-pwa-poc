@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
-import { MediaWrapper } from '../../../../core/models/content/media-wrapper';
-import { Entry } from '../../../../core/models/content/contentful/entry';
+import { MediaWrapper } from '@core/models/content/media-wrapper';
+import { Entry } from '@core/models/content/contentful/entry';
 
 @Component({
   selector: 'rz-title-images',

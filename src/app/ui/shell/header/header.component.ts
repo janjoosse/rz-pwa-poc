@@ -1,7 +1,7 @@
 import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ContentfulService } from '../../../core/services/contentful.service';
+import { ContentfulService } from '@core/services/contentful.service';
 
 @Component({
   selector: 'rz-header',

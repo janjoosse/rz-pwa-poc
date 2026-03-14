@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ContentfulService } from '../../../core/services/contentful.service';
-import { SocialMediaNameIconMapperPipe } from '../../../core/pipes/social-icon-mapper-pipe';
+import { ContentfulService } from '@core/services/contentful.service';
+import { SocialMediaNameIconMapperPipe } from '@core/pipes/social-media-name-icon-mapper-pipe';
 
 @Component({
   selector: 'rz-footer',
