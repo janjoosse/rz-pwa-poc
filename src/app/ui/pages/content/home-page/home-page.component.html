@@ -6,10 +6,8 @@
             <h1>
                 {{ hero?.title }} <strong>{{ hero?.titleHighlight }}</strong>
             </h1>
-            <div class="title-section__text__description">
-                We want to actively contribute to the world's food supply and stimulate fruit and vegetable consumption by laying the foundations for healthy and appealing fruits and vegetables. TODO: RichText
-            </div>
-            <div>And button here</div>
+            <div class="title-section__text__description" [innerHTML]="hero?.description | contentRichTextRenderer"></div>
+            <div>{{ hero?.ctaTitle }}</div>
         </div>
         <rz-title-images 
             [primaryImage]="hero?.primaryImage" 
@@ -17,3 +15,4 @@
         />
     </div>
 }
+

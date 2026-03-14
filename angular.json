@@ -24,6 +24,10 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "allowedCommonJsDependencies": [
+              "@contentful/rich-text-html-renderer",
+              "is-plain-obj"
+            ],
             "assets": [
               {
                 "glob": "**/*",

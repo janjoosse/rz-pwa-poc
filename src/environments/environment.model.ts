@@ -1,7 +1,11 @@
 export interface Environment {
-    contentfulBaseURL: string;
-    contentfulSpaceId: string;
-    contentfulEnvironmentId: string;
-    contentfulAccessToken: string;
-    contentfulPreviewAccessToken: string;
+    channelName: string;
+    fontSubsets: { [channelName: string]: string };
+    contentful: {
+        baseURL: string;
+        spaceId: string;
+        environmentId: string;
+        deliveryAccessToken: string;
+        previewAccessToken: string;
+    }
 }

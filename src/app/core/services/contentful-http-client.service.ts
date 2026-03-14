@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import resolveResponse from 'contentful-resolve-response';
 import { map, Observable } from 'rxjs';
-import { environment as env } from '../../../environments/environment.development';
+import { environment as env } from '../../../environments/environment';
 import { ContentType } from '../models/content/content-types';
 import { ApiResult } from '../models/content/contentful/api-result';
 import { Entry } from '../models/content/contentful/entry';
@@ -16,9 +16,9 @@ export class ContentfulHttpClientService {
 
   getEntries<T>(params: QueryParams): Observable<Entry<T>[]> {
     const query = `content_type=${params.contentType}&limit=${params.limit}&include=${params.include}&${params.query}`;
-    return this.http.get<ApiResult<Entry<T>[]>>(`${env.contentfulBaseURL}/spaces/${env.contentfulSpaceId}/environments/${env.contentfulEnvironmentId}/entries?${this.tagFilter}&${query}`, {
+    return this.http.get<ApiResult<Entry<T>[]>>(`${env.contentful.baseURL}/spaces/${env.contentful.spaceId}/environments/${env.contentful.environmentId}/entries?${this.tagFilter}&${query}`, {
       headers: {
-        Authorization: `Bearer ${env.contentfulAccessToken}`,
+        Authorization: `Bearer ${env.contentful.deliveryAccessToken}`,
         'Cache-Control': 'max-age=86400, public'
       }
     }).pipe(

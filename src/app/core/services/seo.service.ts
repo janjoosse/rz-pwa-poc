@@ -1,4 +1,4 @@
-import { effect, inject, Injectable } from '@angular/core';
+import { DOCUMENT, effect, inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ContentfulService } from './contentful.service';
 import { RouterService } from './router.service';
@@ -11,7 +11,6 @@ export class SeoService {
   private meta = inject(Meta);
   private contentfulService = inject(ContentfulService);
   private routerService = inject(RouterService);
-
   updateMetadata() {
     // Homepage
     effect(() => {
@@ -24,7 +23,7 @@ export class SeoService {
         }
       }
     });
-    
+
     // Content pages
     effect(() => {
       const contentPage = this.contentfulService.contentPage();
