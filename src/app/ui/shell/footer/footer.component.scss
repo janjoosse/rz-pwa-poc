@@ -35,6 +35,11 @@
                 display: grid;
                 gap: 16px;
                 align-content: start;
+
+                p {
+                    margin: 0;
+                    font-size: 18px;
+                }
                 
                 &__item {
                     color: #ffffff;
