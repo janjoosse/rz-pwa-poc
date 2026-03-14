@@ -19,7 +19,9 @@ export class ContentPageComponent {
 
   constructor() {
     effect(() => {
-      this.contentfulService.loadContentPage(this.slug());
-    })
+      if (this.slug() !== this.contentPage()?.fields.slug) {
+        this.contentfulService.loadContentPage(this.slug());
+      }
+    });
   }
 }

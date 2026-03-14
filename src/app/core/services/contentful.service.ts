@@ -20,6 +20,7 @@ export class ContentfulService {
   private contentPageSrc = signal<Entry<ContentPage> | undefined>(undefined);
   contentPage = this.contentPageSrc.asReadonly();
   footer?: Signal<Entry<Footer> | undefined>;
+  homepageSections?: Signal<Entry<HomepageSections> | undefined>;
 
   // HEADER
   header = toSignal(this.cfClient.getEntries<Header>({ contentType: HEADER, limit: 1, include: 2 }).pipe(
@@ -31,9 +32,11 @@ export class ContentfulService {
     map(heroes => heroes.length > 0 ? heroes[0] : undefined),
   ));
   // HOMEPAGESECTIONS
-  homepageSections = toSignal(this.cfClient.getEntries<HomepageSections>({ contentType: HOMEPAGESECTIONS, limit: 1, include: 2 }).pipe(
-    map(sections => sections.length > 0 ? sections[0] : undefined),
-  ));
+  loadHomepageSections() {
+    this.homepageSections = toSignal(this.cfClient.getEntries<HomepageSections>({ contentType: HOMEPAGESECTIONS, limit: 1, include: 2 }).pipe(
+      map(sections => sections.length > 0 ? sections[0] : undefined),
+    ), { injector: this.injector });
+  }
 
   // CONTENT PAGES
   loadContentPage(slug: string) {
