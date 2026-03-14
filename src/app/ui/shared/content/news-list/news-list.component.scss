@@ -1,0 +1,10 @@
+.news-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 3rem;
+
+    &__title {
+        justify-self: center;
+    }
+}

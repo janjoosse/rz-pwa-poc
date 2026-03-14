@@ -2,12 +2,13 @@ import { DestroyRef, inject, Injectable, Injector, signal, Signal } from '@angul
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { map, tap } from 'rxjs';
 import { ContentPage } from '../models/content/content-page';
-import { CONTENT_PAGE, FOOTER, HEADER, HOMEPAGEHERO } from '../models/content/content-types';
+import { CONTENT_PAGE, FOOTER, HEADER, HOMEPAGEHERO, HOMEPAGESECTIONS } from '../models/content/content-types';
 import { Entry } from '../models/content/contentful/entry';
 import { Footer } from '../models/content/footer';
 import { Header } from '../models/content/header';
 import { HomepageHero } from '../models/content/homepage-hero';
 import { ContentfulHttpClientService } from './contentful-http-client.service';
+import { HomepageSection, HomepageSections } from '../models/content/homepage-sections';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +31,9 @@ export class ContentfulService {
     map(heroes => heroes.length > 0 ? heroes[0] : undefined),
   ));
   // HOMEPAGESECTIONS
-  // TODO
+  homepageSections = toSignal(this.cfClient.getEntries<HomepageSections>({ contentType: HOMEPAGESECTIONS, limit: 1, include: 2 }).pipe(
+    map(sections => sections.length > 0 ? sections[0] : undefined),
+  ));
 
   // CONTENT PAGES
   loadContentPage(slug: string) {

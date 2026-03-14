@@ -1,0 +1,6 @@
+<div class="news-list">
+    @let news = newsList();
+    @if (news) {
+        <h2 class="news-list__title"><strong>{{ news?.fields?.title }}</strong></h2>
+    }
+</div>
