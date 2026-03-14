@@ -1,0 +1,6 @@
+@let sections = homepageSections()?.fields?.sections;
+@for (section of sections; track section.sys.id) {
+    @if (section.sys.contentType.sys.id === NEWS_LIST_ID) {
+        <rz-news-list [newsList]="section" />
+    }
+}
